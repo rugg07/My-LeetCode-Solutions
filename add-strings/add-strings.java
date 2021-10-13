@@ -28,3 +28,39 @@ class Solution {
         return result.reverse().toString(); //the result string we would get is 431 as in example1 so to get the right value we reverse it
     }
 }
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+   C++ Code:
+
+class Solution {
+public:
+string addStrings(string num1, string num2) {
+    int i = num1.size() - 1;
+    int j = num2.size() - 1;
+    int carry = 0;
+    string res = ""; //intitalizing an empty string
+    while(i>=0 || j>=0 || carry){
+        long sum = 0;
+        if(i >= 0)
+        {
+            sum += (num1[i] - '0');
+            i--;
+        }
+        if(j >= 0)
+        {
+            sum += (num2[j] - '0');
+            j--;
+        }
+        sum += carry; //in the begining carry is 0 so sum is 0 but later on as we get new carries it gets added to the sum 
+        carry = sum / 10; //find the quotient/carry
+        sum = sum % 10; //find the remainder
+        res =  res + to_string(sum); //to_string(sum)same as .append() of java but since its a bigger function we can do push_back(sum) instead
+    }
+    reverse(res.begin(), res.end()); //reverse result string
+    return res;
+}
+};
+
+Time complexity: O(N+M) //size of the two strings since one can be bigger than the other
+Space complexity: O(N) or O(M) //depending on which string is bigger
