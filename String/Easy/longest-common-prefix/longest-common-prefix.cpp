@@ -5,7 +5,9 @@ public:
         {
             return 0;
         }
-        sort(strs.begin(), strs.end()); //sorts all strings of the array in lexographical order =>[flight,flower,flow]. (Lexographical order orders the string in ASCII Values of the string in the array and not individual strings eg: since ASCII value i of flight < o of flower so flight comes first and since flower has er in the end whilst flow doesnt so flower comes first then flow )
+        sort(strs.begin(), strs.end()); //sorts all strings of the array in lexographical order =>[flight,flower,flow]. 
+        //(Lexographical order orders the string in ASCII Values of the string in the array and not individual strings 
+        //eg: since ASCII value i of flight < o of flower so flight comes first and since flower has er in the end whilst flow doesnt so flower comes first then flow )
         
         string result=strs[0]; //this takes the value of the first string after sorting(flight)
         for(int i=1; i<strs.size(); i++) //to traverse 1 string in the array at a time
