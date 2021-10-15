@@ -14,8 +14,8 @@ public:
                 carry += b[j] - '0';
                 j -= 1;
             }
-            sum += (carry % 2) + '0'; //can be 0 but cant be 0 while entering the loop
-            carry /= 2;
+            sum += (carry % 2) + '0'; //stores the remainder for each division, (..+'0') to check if the ans is above the ASCII value of 0.
+            carry /= 2; //acts as the divisor in normal division
         }
         reverse(sum.begin(), sum.end()); //reversing the string
         return sum;
