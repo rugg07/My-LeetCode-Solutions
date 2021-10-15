@@ -17,7 +17,7 @@ public:
         }
         return ans;
         
-        //we done check if n==0 because given constraint is n has to be between 1 to 45
+        //we don't check if n==0 because given constraint is n has to be between 1 to 45
         
     }
 };
