@@ -31,7 +31,7 @@ class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
     int n = nums.size();
-        unordered_map<int,int>m; //create a map of the elements and its count
+        unordered_map<int,int>m; //Key is the number and value is its index in the vector.
          for(int i=0 ; i<nums.size() ; i++)
          {
             unmap[nums[i]]++; //traverse the array and update for each element
