@@ -1,37 +1,36 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-       //Linked List Cycle Method
         
-        //initialize both pointers to first element
-        int slow = nums[0];
-        int fast = nums[0];
+
+ 
+/*----------------------------------------------------------------------------------------------*/
+
+//Better Approach:
+  int n = nums.size();
         
-        //keep incrementing slow by one step and fast by 2 steps. Do till slow and fast don't meet.
-        do{
-            slow = nums[slow];
-            fast = nums[nums[fast]];
-        }while(slow!=fast);
+        //to initialize a dynamic array with all values 0
+        int *frequency_arr = new int[n]{0};
         
-        //Now make fast to first element again and increment slow and fast by one step now
-        
-        fast = nums[0];
-        
-        while(slow!=fast)
+//traverse original array and depending on the value add 1 to value present in index of freq arr
+        for(int i=0; i<n ; i++)
         {
-            slow = nums[slow];
-            fast = nums[fast];
+            frequency_arr[nums[i]]++;
         }
-        
-        //since nums and fast met and both have the value of duplicate element
-        return slow;
+
+        //traverse new array and check if value>1. If true then its duplicate element
+        for(int i=0; i<n ; i++)
+        {
+            if(frequency_arr[i]>1)
+            {
+                return i; //the index in frequency_arr is of the value in orginial array
+            }
+        }
+        return -1;
     }
 };
 
-//TC:O(n) traversing only once
-//SC:O(1) as constant space is only used.
+//TC: O(n)+O(n) [traverse org arr + traverse new arr]
+//SC: O(n) [new arr]
 
-/*----------------------------------------------------------------------------------------------*/
-/*
- 
-*/
+        
