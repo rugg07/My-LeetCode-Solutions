@@ -25,3 +25,6 @@ public:
         return max_sum;
     }
 };
+
+//TC: O(n) [traversal through array once]
+//SC: O(1) [no extra space is used]
