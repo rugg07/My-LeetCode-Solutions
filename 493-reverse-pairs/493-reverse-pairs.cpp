@@ -78,7 +78,7 @@ public:
        return mergeSort(nums, 0, nums.size()-1);
     }
 };
-//TC: O(nlogn) + O(n) + O(n) [TC of merge sort + merge func + count func]. 
+//TC: O(nlogn) + O(n) + O(n) [TC of merge sort/sort() func + merge func + count func]. 
 
 /*In count func i & j at max move n1+n2 no. of steps hence O(n1+n2)= O(n). If j started from first position everytime it would have been n*n but since j starts from its previous index only we get O(n)*/
  
