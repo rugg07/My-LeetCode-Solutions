@@ -81,6 +81,6 @@ public:
         return countPaths(i,j,m,n);
     }
 };
-//TC: O(exponential) [it can take either path i.e tries all possible combinations]
-//SC: O(exponential) [uses stacks based in recursion]
+//TC: O(2^(m+n)) [it can take either path i.e tries all possible combinations]
+//SC: O(m+n) [uses stacks based in recursion so total would be the no. of rows and columns (m+n)]
 */
