@@ -11,15 +11,15 @@ public:
         int r=m-1;
         
 //total unique path would be m+n-2 C r  
-        double res=1;
+        double total_unique_path=1;
         
 //we take only the last r number ele from total_steps. eg:from 10C3 we take 10*9*8/3*2*1(last3ele)
 //here i acts as r! so we keep dividing by i, eg: 3! => 1*2*3
         for(int i=1;i<=r;i++)
         {
-            res= res*(total_steps-r+i)/i;
+            total_unique_path= total_unique_path*(total_steps-r+i)/i;
         }
-        return res;
+        return total_unique_path;
     }
 };
 //TC: O(m-1) OR O(n-1) [depends on if you calc Combinations with m-1 or n-1]
