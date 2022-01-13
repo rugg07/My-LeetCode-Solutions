@@ -26,3 +26,12 @@ public:
 //TC: O(n^2)[since we are computing each row and column]
 //SC: O(n^2)[we will need to store pascal triangle]
 //.resize() add/deletes the number of elements inside a vector
+
+//Problem 2: To print specifiv ele with given row and col
+/* since no. of rows = no. of cols. we keep the max. as k which represents cols. this helps in getting factorial of that number 
+for(i=0;i<k;++i)
+{
+    res*=(n-i); //we take the multiplication of first k number of ele
+    res/=(i+1); //divide by k! (we do i+1 since i starts from 0)
+}
+*/
