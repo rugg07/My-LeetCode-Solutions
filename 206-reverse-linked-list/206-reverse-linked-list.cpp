@@ -23,4 +23,4 @@ public:
     }
 };
 //TC: O(n) [changing for n elements]
-//sC: O(1)
+//SC: O(1) [because we only reversed given linked list]
