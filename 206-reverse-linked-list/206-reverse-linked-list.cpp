@@ -14,10 +14,10 @@ public:
         ListNode* newHead= NULL; //dummy 
         while(head!=NULL)
         {
-            ListNode* next = head -> next; //points to next var
-            head->next=newHead; //next var becomes the new head
-            newHead=head; //the newHead gets value of head
-            head=next; //head points to next
+            ListNode* next = head -> next; //points to next var after head
+            head->next=newHead; //next var after head becomes the dummy value (since  we reverse dir.)
+            newHead=head; //the dummyValue becomes the head node
+            head=next; //the new dummy which is head node points to next var after head 
         }
         return newHead;
     }
