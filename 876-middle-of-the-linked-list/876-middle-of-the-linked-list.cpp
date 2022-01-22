@@ -8,9 +8,33 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
+        //OPTIMAL: (Tortoise method)
+        ListNode* slow = head;
+        ListNode* fast = head;
+        
+        //neither the next ele after fast=Null (odd) nor fast should point to NULL (even)
+        while(fast!=NULL && fast->next!=NULL)
+        {
+            slow=slow->next; //move one step at a time
+            fast=fast->next->next; //move two step at a time
+        }
+        return slow;//when fast points to null it means slow has reached the middle ele
+    }
+};
+//TC: O(n/2) [fast pointer covers n ele faster (takes 2 steps at a time)]
+//SC: O(1)
+
+
+/*---------------------------------------------------------------------------------------
+
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        //BRUTE FORCE
         ListNode* current = head; //keep dummy pointer pointing to head
         int count=1; //to count total number of ele 
         int iteration=1; //to count iteration number
@@ -26,7 +50,7 @@ public:
         
         if(count%2==0) //Even no.s
         {
-            ListNode* current=head; //to start from head again else it shows last ele
+            ListNode* current=head; //start from head again else it shows last ele
             while(current->next!=NULL)
             {
                if(iteration==count) //once we reach middle ele just return the node 
@@ -55,3 +79,5 @@ public:
 };
 //TC: O(n) + O(n/2) [traverse n ele for counting + till n/2 to find middle node]
 //SC: O(1)
+
+*/
