@@ -14,12 +14,15 @@ public:
         ListNode* newHead= NULL; //dummy 
         while(head!=NULL)
         {
-            ListNode* next = head -> next; //points to next var after head
-            head->next=newHead; //next var after head becomes the dummy value (since  we reverse dir.)
-            newHead=head; //the dummyValue becomes the head node
-            head=next; //the new dummy which is head node points to next var after head 
+            ListNode* next = head -> next; //points to next ele after head
+            
+            //head->next connection going right is broken and now points to dummy node
+            head->next=newHead;
+            
+            newHead=head; //the dummy node becomes the new head node
+            head=next; //original head node takes the pos of head->next ele as head node
         }
-        return newHead;
+        return newHead; //this finally points to the begining (when reversed)
     }
 };
 //TC: O(n) [changing for n elements]
