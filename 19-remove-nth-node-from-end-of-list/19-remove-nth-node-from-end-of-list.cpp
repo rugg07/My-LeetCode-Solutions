@@ -8,11 +8,55 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         
-        //Brute Force: 
+        //OPTIMAL
+        ListNode* dummy = new ListNode(); //create dummy node
+        
+        dummy->next=head; //dummy node points to head
+        
+        //make slow & fast pointer both should point to dummy node
+        ListNode* slow = dummy;
+        ListNode* fast = dummy;
+        
+        //traverse list with fast until it reaches n
+        for(int i=1; i<=n; i++)
+        {
+            fast=fast->next;
+        }
+        
+        while(fast->next!=NULL) //move fast & slow by 1 step until next ele of fast!=NULL
+        {
+            slow=slow->next;
+            fast=fast->next;
+        }
+        
+    slow->next=slow->next->next;//break link to next ele and make it join the ele after
+    
+ //since dummy itself is NULL we need to print from head onwards and done above dummy=head 
+    return dummy->next; 
+    }
+};
+//TC: O(n) [traverse array with fast pointer only]
+//SC: O(1)
+/* ---------------------------------------------------------------------------------------
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+    
+        //BRUTE FORCE: 
         ListNode* current = head; //start from head node
         int count=1;
         int iteration=1;
@@ -61,3 +105,4 @@ public:
 };
 //TC: O(n) + O(n) = O(2n) [traverse to count list length + traverse to delete nth node]
 //SC: O(1)
+*/
