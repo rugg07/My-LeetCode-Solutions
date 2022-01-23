@@ -60,7 +60,7 @@ public:
     return dummy->next; 
     }
 };
-//TC: O(n) [traverse array with fast pointer only]
+//TC: O(n) [traverse array with fast pointer till n and after n [0..n][n+1..last ele]]
 //SC: O(1)
 /* ---------------------------------------------------------------------------------------
 class Solution {
