@@ -31,15 +31,26 @@ public:
         ListNode* slow = dummy;
         ListNode* fast = dummy;
         
-        //traverse list with fast until it reaches n
+        //traverse list with fast until it reaches n (node to be deleted)
         for(int i=1; i<=n; i++)
         {
             fast=fast->next;
         }
         
-        while(fast->next!=NULL) //move fast & slow by 1 step until next ele of fast!=NULL
+        //If fast would have reached NULL this means the node to be deleted 
+        //is equal to the number of nodes in the linked list.   
+        if(fast==NULL)
         {
-            slow=slow->next;
+            ListNode* node = head;
+            head=head->next;
+            delete node;
+            return head;
+        }
+        
+        //move fast & slow by 1 step until next ele of fast!=NULL                                //slow pointer is standing one node before the node to be deleted.
+        while(fast->next!=NULL) 
+        {
+            slow=slow->next; 
             fast=fast->next;
         }
         
