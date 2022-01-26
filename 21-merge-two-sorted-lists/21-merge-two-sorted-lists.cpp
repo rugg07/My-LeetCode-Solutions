@@ -20,23 +20,22 @@ public:
         //do && so it breaks loop only when both lists go to null
         while(list1!=NULL && list2!=NULL) 
         {
-            int node=0; //stores the values
+            //int node=0; //stores the values
             
             if(list1->val <= list2->val )
             {
-                node=list1->val;
-                list1=list1->next; //go to next ele
+                //since we use a pointer we directly point to node, and not int list->val
+                temp->next=list1; 
+                list1=list1->next; 
             }
             else
             {
-                node=list2->val;
+                temp->next=list2;
                 list2=list2->next;
             }
             
-            //store the value by creating new node on each iteration
-            ListNode* newNode = new ListNode (node); 
-            temp->next= newNode; //make next ele have same value as the newNode created
-            temp=temp->next; //go to next ele
+            //go to next ele
+            temp=temp->next;
         }
         
         if(list1) 
