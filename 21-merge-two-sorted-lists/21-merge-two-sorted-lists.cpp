@@ -9,7 +9,7 @@
  * };
  */
 
-class Solution {
+/*class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
        //OPTIMAL: inplace (not creating external/new nodes)
@@ -45,8 +45,8 @@ public:
 };
 //TC: O(n1+n2) [traversing list1 and list2]
 //SC: O(1) [since we dont make a new linkedlist]
+*/
 
-/*
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
@@ -95,4 +95,3 @@ public:
 };
 //TC: O(n1+n2) [traverse list1 and list 2]
 //SC: O(n1+n2) => O(n) [creating new list of n ele]
-*/
