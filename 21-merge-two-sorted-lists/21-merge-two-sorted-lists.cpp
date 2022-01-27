@@ -14,19 +14,37 @@ public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
        //OPTIMAL: inplace (not creating external/new nodes)
         
-        ListNode *start = new ListNode();               //false head
-      ListNode *tmp = start;                          //working node 
-      
-      while(list1 && list2){                                //if we have two lists
-        if(list1->val < list2->val){tmp->next = list1; list1 = list1->next;}
-        else {tmp->next = list2; list2 = list2->next;}
-        tmp = tmp->next;
-      }
-      if(list1) tmp->next = list1;     //if we have only list1 or we have remain as list1
-      if(list2) tmp->next = list2;     //if we have only list2 or we have remain as list2
-      return start->next;            //return real head
+        if(list1==NULL) //list 1 empty
+            return list2;
+     
+        if(list2==NULL) //list 2 empty
+            return list1;
+        
+        if(list1->val > list2->val)
+            swap(list1,list2); //make list with first ele smallest as list1 (final list)
+        
+        ListNode* result = list1; //points to list with 1st smaller ele (head node)
+        
+        while(list1!=NULL && list2!=NULL)
+        {
+            ListNode* temp = NULL; //to store the value of smaller ele from other list
+            
+            //go till end of list1, since list1 will be connecting with ele of list2
+            while(list1!=NULL && list1->val <= list2->val) 
+            {
+                temp=list1;
+                list1=list1->next;
+            }
+            
+            temp->next=list2;  //when list2 ele is samller
+            swap(list1,list2); //swap pos list1 with list2 pointer to point to smaller ele 
+        }
+        
+        return result;
     }
 };
+//TC: O(n1+n2) [traversing list1 and list2]
+//SC: O(1) [since we dont make a new linkedlist]
 
 /*
 class Solution {
@@ -37,10 +55,10 @@ public:
         ListNode* dummy = new ListNode(); //to make new head of new list
         ListNode* temp = dummy;//points to the new head
         
-        if(l1==NULL) //list 1 empty
+        if(list1==NULL) //list 1 empty
             return list2;
      
-        if(l2==NULL) //list 2 empty
+        if(list2==NULL) //list 2 empty
             return list1;
         
         //we check if curr ele is null not ->next!=NULL
