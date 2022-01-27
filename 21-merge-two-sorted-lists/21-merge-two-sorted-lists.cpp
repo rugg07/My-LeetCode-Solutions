@@ -9,10 +9,10 @@
  * };
  */
 
-/*class Solution {
+class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-       //OPTIMAL: inplace (not creating external/new nodes)
+       //OPTIMAL:- SC:O(1) inplace (not creating external/new nodes)
         
         if(list1==NULL) //list 1 empty
             return list2;
@@ -45,12 +45,13 @@ public:
 };
 //TC: O(n1+n2) [traversing list1 and list2]
 //SC: O(1) [since we dont make a new linkedlist]
-*/
 
+
+/*
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        //BRUTE FORCE: similar to adding two ele in linked list
+        //SC: O(n) similar to adding two ele in linked list
         
         ListNode* dummy = new ListNode(); //to make new head of new list
         ListNode* temp = dummy;//points to the new head
@@ -95,3 +96,4 @@ public:
 };
 //TC: O(n1+n2) [traverse list1 and list 2]
 //SC: O(n1+n2) => O(n) [creating new list of n ele]
+*/
