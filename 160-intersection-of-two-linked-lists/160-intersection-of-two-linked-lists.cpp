@@ -9,9 +9,72 @@
 
 /* The first node after which both lists point to same ele
 eg: A=[4,1,8,4,5], B=[5,6,1,8,4,5] (both lists have 8,4,5 so ele 8 is intersecting node)*/
+
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        //OPTIMAL: using length difference
+        
+        int listA_count = 0;
+		int listB_count = 0;
+		
+        //use two pointers to point to head node of both lists
+        ListNode* ptr1 = headA;
+		ListNode* ptr2 = headB;
+        
+        //find count/length of both lists
+        while(ptr1 != NULL) //listA
+        {
+			listA_count++;
+			ptr1 = ptr1 -> next;
+		}
+		while(ptr2 != NULL) //listB
+        {
+			listB_count++;
+			ptr2 = ptr2 -> next;
+		}
+        
+        //find difference in length of both lists
+		int t = abs(listA_count - listB_count);
+		
+        if(listA_count > listB_count) 
+        {
+			while(t) //move listA pointer by the t no. of positions
+            {
+				headA = headA -> next;
+				t--;
+			}
+		}
+		else //if(listA_count < listB_count) 
+        {
+			while(t) //move listB pointer by the t no. of positions
+            {
+				headB = headB -> next;
+				t--;
+			}
+		}
+        
+        //once the desired pointer moved by t pos. 
+        //see if pointers of both lists point to same node
+		while(headA != NULL and headB != NULL)
+        {
+			if(headA == headB)
+				return headA;
+			
+			headA = headA -> next;
+			headB = headB -> next;
+		}
+		return NULL;
+    }
+};
+//TC: O(n) [traverse n ele of both lists]
+//SC: O(1)
+
+/*---------------------------------------------------------------------------------------
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        //BETTER: using hashSet
         
         unordered_set<ListNode*> ump; //create a hashSet to store all nodes of headA
     
@@ -32,11 +95,12 @@ public:
         
             headB = headB->next;
         }
-        return 0;
+        return NULL;
     }
 };
 //TC: O(n+m) [traverse listA to put in hashSet + traverse listB to check value in hashSet]
 //SC: O(n)+O(m) = O(n) [hashSet with ele of listA + listB]
+*/
 /*----------------------------------------------------------------------------------------
 class Solution {
 public:
