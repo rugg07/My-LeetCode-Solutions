@@ -9,7 +9,35 @@
 
 /* The first node after which both lists point to same ele
 eg: A=[4,1,8,4,5], B=[5,6,1,8,4,5] (both lists have 8,4,5 so ele 8 is intersecting node)*/
-
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        
+        unordered_set<ListNode*> ump; //create a hashSet to store all nodes of headA
+    
+        while(headA != NULL)
+        {
+            ump.insert(headA);
+            headA = headA->next;
+        }
+    
+        while(headB != NULL)
+        {
+            //if any node of headB = headA is present in hashSet then return node
+            if(ump.find(headB) != ump.end()) 
+                return headB;
+            
+            else
+                ump.insert(headB); //insert in hashSet since the node isnt present
+        
+            headB = headB->next;
+        }
+        return 0;
+    }
+};
+//TC: O(n+m) [traverse listA to put in hashSet + traverse listB to check value in hashSet]
+//SC: O(n)+O(m) = O(n) [hashSet with ele of listA + listB]
+/*----------------------------------------------------------------------------------------
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
@@ -39,3 +67,4 @@ public:
 };
 //TC: O(m*n) [traversing listA * with each ele of list B at one time]
 //SC: O(1)
+*/
