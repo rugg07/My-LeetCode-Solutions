@@ -37,7 +37,7 @@ public:
             }
             
             temp->next=list2;  //when list2 ele is samller
-            swap(list1,list2); //swap pos list1 with list2 pointer to point to smaller ele 
+            swap(list1,list2); //swap pos list2 with list1 pointer to point to smaller ele 
         }
         
         return result;
