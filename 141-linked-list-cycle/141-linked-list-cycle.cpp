@@ -12,14 +12,16 @@ public:
     bool hasCycle(ListNode *head) {
         //OPTIMAL: Two-pointer approach (slow & fast)
         
-        if(head==NULL) //no ele in the list
+        //no ele in the list OR only 1 ele in list so no cycle is possible
+        if(head==NULL || head->next==NULL) 
             return false;
         
         //make two pointers that point to the head node
         ListNode *slow = head;
         ListNode *fast = head;
         
-        //traverse until both dont point to NULL 
+        //traverse until both dont point to NULL
+        //do fast->next!=NULL to check if we standing at last node and next ele is NULL
         while(fast!=NULL && slow!=NULL && fast->next!=NULL)
         {
             slow=slow->next; //move by 1 step
@@ -40,8 +42,8 @@ public:
     bool hasCycle(ListNode *head) {
         //BRUTE FORCE: using hashMap
         
-        //no ele in the list
-        if(head==NULL)
+        //no ele in the list OR only 1 ele in list so no cycle is possible
+        if(head==NULL || head->next==NULL) 
             return false;
         
         unordered_map<ListNode*, int> map; //store the node and count
