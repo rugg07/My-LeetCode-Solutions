@@ -157,3 +157,6 @@ Node *flatten(Node *root)
    return root; //after merging all lists return the final root
 }
 
+//TC: O(m*n) [traversing all nodes (in ->bottom & ->next)]
+//SC: O(1)
+
