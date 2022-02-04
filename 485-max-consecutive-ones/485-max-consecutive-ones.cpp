@@ -1,7 +1,7 @@
 class Solution {
 public:
     int findMaxConsecutiveOnes(vector<int>& nums) {
-        //BRUTE FORCE: traversing array
+        //traversing array
         
         int count=0; //current count
         int maxCount=0; //maximum count
