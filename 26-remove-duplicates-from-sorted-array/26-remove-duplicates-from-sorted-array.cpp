@@ -23,6 +23,9 @@ public:
 
 //0,0,1,1 =>0,1
 
+//TC: O(n) [traversing main arr]
+//SC: O(1) [changing in main array itself]
+
 /*----------------------------------------------------------------------------------------
 class Solution {
 public:
