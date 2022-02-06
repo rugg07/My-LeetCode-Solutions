@@ -2,7 +2,58 @@ class Solution {
 public:
     int trap(vector<int>& height) {
        
-        //OPTIMAL: using Prefix & Suffix arr (to replicate left and right max)
+        //OPTIMAL: using 2 pointer (to replicate left and right max)
+        
+        int left=0;
+        int right=height.size()-1;
+        
+        int leftmax=0;
+        int rightmax=0;
+        
+        int result=0;
+        
+        //if left overtakes right exit loop
+        while(left<=right)
+        {
+            
+            if(height[left]<=height[right]) //value stored in left pointer is less
+            {
+                //now we check if its >= the previously stored leftmac
+                if(height[left]>=leftmax)
+                    leftmax=height[left];
+                
+                else //if its smaller then we just add it to result
+                    result+=leftmax-height[left];
+                
+                left++;  //go to next ele in array
+            }
+            
+            else //value stored in right pointer is more
+            {
+                if(height[right]>=rightmax) //update new rightmax
+                    rightmax=height[right];
+                
+                else //add it to result
+                    result+=rightmax-height[right];
+                
+                right--; //go to next ele from the back
+            }
+        }
+        return result;   
+    }
+};
+
+/* we do result+= left/rightmax - height[i] because we are trying to replicate the step of
+min(leftmax,rightmax)-height[i] to remove the value stored at that pos in arr */
+
+//TC: O(n) [traverse from left + traverse from right = traversal of entire arr]
+//SC: O(1)
+/*----------------------------------------------------------------------------------------
+class Solution {
+public:
+    int trap(vector<int>& height) {
+       
+        //BETTER: using Prefix & Suffix arr (to replicate left and right max)
         
         int n=height.size();
         
@@ -34,11 +85,10 @@ public:
             //using the same formula which we use in brute force
             result+= min(prefix[i], suffix[i])-height[i];
         }
-        
-        return result;
-        
+        return result;   
     }
 };
+*/
 
 /** do prefix[p]/suffix[s] before height[i-1]/[i+1] to prevent wrong output **/
 
