@@ -13,10 +13,73 @@ public:
     }
 };
 */
-
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
+        //OPTIMAL: 
+        
+          Node *iter = head; 
+          Node *front = head;
+
+          // First round: make copy of each node,
+          // and link them together side-by-side in a single list.
+          // A->A'->B->B'->C->C'
+          while (iter != NULL) 
+          {
+            front = iter->next;
+              
+            //store the value into the copy
+            Node *copy = new Node(iter->val);
+            iter->next = copy; //original node points to copy node
+            copy->next = front; //clone node point to next node in original list
+
+            iter = front; 
+          }
+
+          // Second round: assign random pointers for the copy nodes.
+          iter = head;
+          while (iter != NULL) 
+          {
+            //the random pointer in clone points to the next node for random in org. node
+            //iter->next (clone node) iter->random->next(next node that random points too)
+            if (iter->random != NULL) 
+              iter->next->random = iter->random->next; 
+        
+            //every second node is original lists node so we do next->next
+            iter = iter->next->next;
+          }
+
+          // Third round: restore the original list, and extract the copy list.
+          iter = head;
+        
+          Node *pseudoHead = new Node(0); //new node
+          Node *copy = pseudoHead;
+
+          //we are skipping/breaking links of org. node to clone nodes list and vice versa 
+          while (iter != NULL) 
+          {
+            front = iter->next->next; //front points to clone nodes
+
+            // extract the copy
+            copy->next = iter->next; //clone lists next node is again clone node
+
+            // restore the original list
+            iter->next = front; //org. node points to next node of the clone node
+              
+            copy = copy -> next; //traverse clone nodes 
+            iter = front; //go to next node.
+          }
+
+          return pseudoHead->next; //since first node is null, 2nd node is head node
+    }
+};
+//TC:O(n)+O(n)+O(n)=O(3n)=O(n)[assign val + assign random + segregate org and cloned list]
+//SC:O(1) [since we need to return new list, we dont take its SC]
+/*----------------------------------------------------------------------------------------
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        //BRUTE FORCE: using hashMap 
         
        // this map points to the clone of the original node
         map<Node*,Node*> mp;
@@ -52,3 +115,6 @@ public:
         return mp[head];
     }
 };
+//TC: O(N) [traversing list]
+//SC: O(N) [hashMap]
+*/
