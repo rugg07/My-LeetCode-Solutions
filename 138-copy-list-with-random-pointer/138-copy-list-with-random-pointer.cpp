@@ -58,16 +58,17 @@ public:
           //we are skipping/breaking links of org. node to clone nodes list and vice versa 
           while (iter != NULL) 
           {
-            front = iter->next->next; //front points to clone nodes
+            front = iter->next->next; //front points to org. nodes
 
             // extract the copy
-            copy->next = iter->next; //clone lists next node is again clone node
+            copy->next = iter->next; //A->A’->B->B’, A’->next will point to B’. i.e A’->B’
 
-            // restore the original list
-            iter->next = front; //org. node points to next node of the clone node
+            // restore the original list                
+          //A->A’->B->B’ so here A->next points to front which will be A->next->next i.e B
+            iter->next = front; 
               
-            copy = copy -> next; //traverse clone nodes 
-            iter = front; //go to next node.
+            copy = copy -> next; //go to next node in clone list 
+            iter = front; //go to next node in org list.
           }
 
           return pseudoHead->next; //since first node is null, 2nd node is head node
