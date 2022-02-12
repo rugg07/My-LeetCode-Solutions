@@ -49,7 +49,7 @@ public:
 
 //this will work if the array hasn't been rotated as well
 
-//TC: O(logn) [worst case of binary search since lookup for nums[0]< or > target O(1)]
+//TC: O(logn) [binary search]
 //SC: O(1)
 
 /*-----------------------------------------------------------------------------------------
