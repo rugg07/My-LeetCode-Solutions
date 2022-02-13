@@ -13,7 +13,7 @@ class Solution{
     int findPlatform(int arr[], int dep[], int n)
     {
     	// Your code here
-    	//2-pointer approach
+    	//2-pointer - Greedy approach
     	
     	//sort using n since arr.begin(), arr.end() doesnt work
     	sort(arr,arr+n);
