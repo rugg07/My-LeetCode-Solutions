@@ -53,7 +53,8 @@ class Solution{
     	return result; 
     }
 };
-
+//TC: O(nlogn) [traverse arr * sorting array]
+//SC: O(1)
 
 // { Driver Code Starts.
 // Driver code
