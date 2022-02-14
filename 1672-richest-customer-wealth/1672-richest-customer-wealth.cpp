@@ -10,11 +10,11 @@ public:
             
             for(int j=0; j<accounts[i].size();j++)
             {
-                //find total of that customer & also keep track of max for each iteration
+                //find total of each customer
                 result+=accounts[i][j]; 
-                maxresult=max(maxresult,result);
             }
-            //can also find max after finding total of each customer by keeping here
+            //update maxresult if the total has increased
+            maxresult=max(maxresult,result);
         }
         return maxresult;
     }
