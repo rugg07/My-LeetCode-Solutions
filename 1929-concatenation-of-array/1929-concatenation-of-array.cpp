@@ -21,8 +21,9 @@ public:
 //TC: O(n) [traverse nums arr]
 //SC: O(1) [we dont count newnums arr since its being returned]
 
-/*
-Can also be done without initializing vector arr space since its dynamic.
+
+/*--------------------------------------------------------------------------------------
+We can update the org arr itself and return it. Since org arr is of vector type int, this means its a dynamic arr and can have more ele added.
 
         int n=nums.size();
         for(int i=0;i<n;i++)
