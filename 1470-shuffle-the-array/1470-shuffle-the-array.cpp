@@ -2,20 +2,33 @@ class Solution {
 public:
     vector<int> shuffle(vector<int>& nums, int n) {
         
-        vector<int> result;
+        //In-place
         
-        //traverse from i = 0 to n=arr.size()/2 [0...n] and push values into arr
-        for(int i=0; i < n; i++)
+        int len = nums.size();
+        
+		// to store the pair of numbers in right half of the original array
+        for(int i = n; i < nums.size(); i++)
+            nums[i] = (nums[i] * 1024) + nums[i - n];
+        
+        int index = 0;
+		
+        // to retrive values from the pair of numbers,
+        //placing those retrieved value at their desired position
+        for(int i = n; i < nums.size(); i++, index += 2)
         {
-            result.push_back(nums[i]);
-            result.push_back(nums[n+i]);
+            nums[index] = nums[i] % 1024;
+            nums[index + 1] = nums[i] / 1024;
         }
-        return result;
+        
+        return nums;   
     }
 };
 //TC: O(n) [traverse arr]
-//SC: O(1) [result array is being returned so not counted]
-/*
+//SC: O(1) [being done in-place]
+
+/*See the reason in doc*/
+
+/*---------------------------------------------------------------------------------------
 class Solution {
 public:
     vector<int> shuffle(vector<int>& nums, int n) {
