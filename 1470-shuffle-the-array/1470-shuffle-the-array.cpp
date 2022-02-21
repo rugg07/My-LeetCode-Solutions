@@ -4,8 +4,6 @@ public:
         
         //In-place
         
-        int len = nums.size();
-        
 		// to store the pair of numbers in right half of the original array
         for(int i = n; i < nums.size(); i++)
             nums[i] = (nums[i] * 1024) + nums[i - n];
@@ -46,7 +44,8 @@ public:
     }
 };
 //TC: O(n) [traverse arr]
-//SC: O(1) [result array is being returned so not counted]
+//SC: O(n) [since result arr is being returned so not counted and TC should be O(1)]
 
 //we do i+n so that we get y1,y2,y3.. i=0 & n=3 in arr.size()=6 we put arr[0] and then 0+3=arr[3] goes into the arr.
+
 */
