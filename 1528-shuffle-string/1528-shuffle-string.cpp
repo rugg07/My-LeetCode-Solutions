@@ -3,7 +3,7 @@ class Solution {
 public:
     string restoreString(string s, vector<int>& indices) {
         
-        //OPTIMAL: swapping (no extra space)
+        //OPTIMAL: Cyclic sort - swapping (no extra space)
         
         for(int i=0; i<indices.size(); )
         {
